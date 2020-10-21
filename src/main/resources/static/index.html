@@ -29,7 +29,7 @@ and open the template in the editor.
                     Clima
                 </h2>
             </label> <input type="text" id="clima" value="City"/>
-            <button id="get" onclick=OpenWeatherApp.pintar($("#clima").value())>Buscar</button>
+            <button id="get" onclick=OpenWeatherApp.WeatherByNameCity($("#clima").val())>Buscar</button>
 
             <div class="divdatos" align="left">
                 <h2>
@@ -37,7 +37,9 @@ and open the template in the editor.
                 </h2>
                 <table id="t01" class="table ">
                     <tr>
-                        <th>clima</th>
+                        <th>Ciudad</th>
+                        <th>Descripcion</th>
+                        <th>temperatura</th>
                         <th>temperaturaMax</th>
                         <th>temperaturaMin</th>
                         <th>nubes</th>
@@ -48,7 +50,7 @@ and open the template in the editor.
 		</tbody>
             </div>
 
-            <div class="divmapa" align="center">
+            <div class="divmapa" align="left">
                 <h2>
                     Mapa
                 </h2>

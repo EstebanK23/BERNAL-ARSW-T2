@@ -4,30 +4,19 @@
  * and open the template in the editor.
  */
 
-var cliente = OpenWeatherClient;
-var ciudad;
-
 var OpenWeatherApp = (function () {
     function pintar(data) {
+        data = JSON.parse(data);
         if (data == null) {
             return new Error("No se encontro");
         }
-        lista = [];
-        var lista = data.map(function (pb) {
-            return {weather: pb.weather.main, tempMax: pb.main.temp_max, tempMin: pb.main.temp_min, Cloud: pb.clouds.all}
-        })
-
-        lista.map(function (pb) {
-
-            var fila = <tr><td id="weather"> ${pb.weather} </td><td id="tempMax">${pb.tempMax}</td><td id="tempMin"> ${pb.tempMin} </td><td id="Cloud"> ${pb.Cloud}</td> </tr>;
-            $("#t01  tbody").append(fila);
-
-        })
+        var datos_tabla = "<tr><td id=\"city\">" + data.name + "<td id=\"description\">" + data.weather[0].description + "<td id=\"city\">" + data.main.temp + "</td><td id=\"tempMax\">" + data.main.temp_max + "</td><td id=\"tempMin\">" + data.main.temp_min + "</td><td id=\"Cloud\">" + data.clouds.all + "</td> </tr>";
+        $("#t01  tbody").append(datos_tabla);
     }
 
     return {
         WeatherByNameCity: function (nombre) {
-            cliente.WeatherByNameCity(nombre, pintar);
+            OpenWeatherClient.WeatherByNameCity(pintar, nombre);
         },
     };
 
